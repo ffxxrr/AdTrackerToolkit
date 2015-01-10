@@ -1,6 +1,7 @@
 // borrowed from : http://www.bennadel.com/blog/1752-tracking-google-adsense-clicks-with-jquery-and-coldfusion.htm
 // obviously requires jquery 
-
+var frameHeight;
+var frameWidth;
 $( document ).ready(function() {
 
 	console.log('initialized tracking script');
@@ -24,7 +25,9 @@ $( document ).ready(function() {
      	{	        	        
 	        $(this).mouseover(
 		        function(){
-		            console.log('over');
+		        	frameHeight = $this.height();
+		        	frameWidth = $this.width();
+		            console.log('over:'+frameHeight+'x'+frameWidth);
 		            isOverGoogleAd = true;
 		        }
 		    );
@@ -71,7 +74,7 @@ $( document ).ready(function() {
 	            
 	            // we want to invoke google tag manager here
 	            // lets have an alert for know for some testing
-	            alert('looks like you clicked an ad! - now I just have to work out which one and where!');
+	            alert('looks like you clicked an ad! - iframe height:'+frameHeight+' - width:'+frameWidth);
 
 	            /*
 	            $.ajax({
